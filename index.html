@@ -8,6 +8,7 @@
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: #111;
@@ -18,7 +19,7 @@
 
     a { color: inherit; }
 
-    /* Hero banner */
+    /* Hero */
     .hero {
       position: relative;
       height: 68vh;
@@ -62,15 +63,24 @@
       font-size: clamp(2.2rem, 7vw, 5.2rem);
       line-height: 0.95;
       letter-spacing: -0.03em;
-      text-shadow: 0 2px 16px rgba(0,0,0,.25);
+      text-shadow: 0 2px 16px rgba(0,0,0,.30);
+    }
+
+    /* Minecraft-style colors */
+    .hero h1 .aqua {
+      color: #55FFFF; /* Minecraft Aqua */
+    }
+
+    .hero h1 .bridge {
+      color: #D3D3D3; /* Light grey */
     }
 
     .hero p {
       margin: 12px auto 18px;
       max-width: 700px;
       font-size: clamp(0.95rem, 2vw, 1.1rem);
-      color: rgba(255,255,255,.95);
-      text-shadow: 0 1px 8px rgba(0,0,0,.2);
+      color: rgba(255,255,255,.96);
+      text-shadow: 0 1px 8px rgba(0,0,0,.22);
     }
 
     .ip {
@@ -96,20 +106,24 @@
 
     .copy-btn:hover { background: #fff; }
 
-    /* Page layout */
-    .wrap {
+    /* Sections */
+    .section {
+      padding: 30px 0;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+    }
+
+    .section.alt {
+      background: #f7f7f7; /* very light grey */
+    }
+
+    .section.images {
+      background: #fff; /* always white */
+    }
+
+    .inner {
       width: min(980px, 92%);
       margin: 0 auto;
-      padding: 34px 0 68px;
-    }
-
-    .section {
-      padding: 28px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .section:last-of-type {
-      border-bottom: 0;
     }
 
     .kicker {
@@ -136,7 +150,6 @@
       font-size: .94rem;
     }
 
-    /* Simple info row */
     .info-row {
       display: flex;
       flex-wrap: wrap;
@@ -148,11 +161,15 @@
     .chip {
       padding: 8px 12px;
       border: 1px solid #ddd;
-      background: #fafafa;
+      background: #fff;
       font-size: .92rem;
     }
 
-    /* Screenshot section */
+    .section.alt .chip {
+      background: #fcfcfc;
+    }
+
+    /* Gallery */
     .gallery {
       display: grid;
       grid-template-columns: 1fr;
@@ -169,12 +186,16 @@
       border: 1px solid #eee;
     }
 
-    /* CTA join box (not a card style, just bordered area) */
+    /* Join area */
     .join-box {
       margin: 14px auto 0;
       padding: 18px 14px;
       max-width: 760px;
       border: 1px solid #e8e8e8;
+      background: #fff;
+    }
+
+    .section.alt .join-box {
       background: #fcfcfc;
     }
 
@@ -186,19 +207,22 @@
     }
 
     footer {
-      margin-top: 28px;
+      padding: 26px 0 36px;
       color: #666;
       font-size: .9rem;
+      background: #fff;
     }
 
     @media (min-width: 760px) {
       .gallery {
         grid-template-columns: 1fr 1fr;
       }
+
       .gallery img:first-child {
         grid-column: 1 / -1;
         height: 420px;
       }
+
       .gallery img:nth-child(2),
       .gallery img:nth-child(3) {
         height: 240px;
@@ -210,6 +234,7 @@
         margin-left: 0;
         margin-top: 8px;
       }
+
       .hero {
         height: 62vh;
         min-height: 380px;
@@ -220,11 +245,10 @@
 <body>
 
   <header class="hero">
-    <!-- Placeholder banner image (replace later with your real screenshot/banner) -->
-    <img src="images/image-45.png" alt="AquaBridge server banner placeholder">
+    <img src="images/image-45.jpg" alt="AquaBridge server banner">
     <div class="hero-content">
       <div class="hero-box">
-        <h1>AquaBridge</h1>
+        <h1><span class="aqua">Aqua</span><span class="bridge">Bridge</span></h1>
         <p>Java Minecraft server with our own shot at what we would like FastBuilder to look like.</p>
         <div>
           <span class="ip" id="server-ip">Server IP: AquaBridge.eu</span>
@@ -234,9 +258,8 @@
     </div>
   </header>
 
-  <main class="wrap">
-
-    <section class="section">
+  <section class="section">
+    <div class="inner">
       <p class="kicker">Server</p>
       <h2>FastBuilder-Inspired Java Gameplay</h2>
       <p>
@@ -248,9 +271,11 @@
         <div class="chip">FastBuilder-inspired</div>
         <div class="chip">Server IP: AquaBridge.eu</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
+  <section class="section alt">
+    <div class="inner">
       <p class="kicker">Information</p>
       <h2>About AquaBridge</h2>
       <p>
@@ -260,21 +285,25 @@
       <p class="muted">
         The FastBuilder gamemode was originally invented on McPlayHD.net by McPlayHD and TROOP3R.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
+  <section class="section images">
+    <div class="inner">
       <p class="kicker">Media</p>
       <h2>Screenshots</h2>
-      <p class="muted">These are placeholder images for now. Replace them with your own server screenshots later.</p>
+      <p class="muted">Replace these with your own server screenshots later if you want.</p>
 
       <div class="gallery">
-        <img src="images/image-50.png" alt="AquaBridge screenshot placeholder 1" loading="lazy">
-        <img src="images/image-35.png" alt="AquaBridge screenshot placeholder 2" loading="lazy">
-        <img src="images/image-48.png" alt="AquaBridge screenshot placeholder 3" loading="lazy">
+        <img src="images/image-50.jpg" alt="AquaBridge screenshot 1" loading="lazy">
+        <img src="images/image-35.jpg" alt="AquaBridge screenshot 2" loading="lazy">
+        <img src="images/image-45.jpg" alt="AquaBridge screenshot 3" loading="lazy">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
+  <section class="section alt">
+    <div class="inner">
       <p class="kicker">Join</p>
       <h2>Connect to the Server</h2>
       <p>
@@ -285,23 +314,26 @@
         <div class="muted">Minecraft Java Server IP</div>
         <div class="big-ip">AquaBridge.eu</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
+  <section class="section">
+    <div class="inner">
       <p class="kicker">Disclaimer</p>
       <h2>Legal / Affiliation</h2>
       <p class="muted">
         AquaBridge is not affiliated with Mojang Studios, Microsoft, or the original FastBuilder creators/platforms.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      © AquaBridge
-    </footer>
-  </main>
+  <footer>
+    © AquaBridge
+  </footer>
 
   <script>
     const copyBtn = document.getElementById("copy-btn");
+
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText("AquaBridge.eu");
