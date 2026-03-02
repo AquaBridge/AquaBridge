@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <title>AquaBridge.eu</title>
   <meta name="description" content="AquaBridge.eu - FastBuilder">
   <style>
@@ -418,7 +419,7 @@
     <div class="hero-content">
       <div class="hero-box">
         <h1><span class="aqua">Aqua</span><span class="bridge">Bridge</span></h1>
-        <p>Java Minecraft server with our own shot at what we imagine FastBuilder should look like.</p>
+        <p>Need a place to practice your bridging? We have what you need.</p>
         <div>
           <span class="ip" id="server-ip">Server IP: AquaBridge.eu</span>
           <button class="copy-btn" id="copy-btn" type="button">Copy IP</button>
@@ -462,9 +463,9 @@
       <h2>Screenshots</h2>
 
       <div class="gallery">
-        <img src="images/image-50.png" alt="AquaBridge screenshot 1" loading="lazy">
+        <img src="images/image-48.png" alt="AquaBridge screenshot 1" loading="lazy">
         <img src="images/image-35.png" alt="AquaBridge screenshot 2" loading="lazy">
-        <img src="images/image-45.png" alt="AquaBridge screenshot 3" loading="lazy">
+        <img src="images/image-50.png" alt="AquaBridge screenshot 3" loading="lazy">
       </div>
     </div>
   </section>
@@ -592,7 +593,34 @@
         setTimeout(() => copyBtn.textContent = "Copy IP", 1200);
       }
     });
+
+    // Subtle scroll-follow for the HERO banner (images/image-45.png) only
+    const heroImg = document.querySelector(".hero > img");
+    if (heroImg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      let ticking = false;
+
+      const update = () => {
+        const y = Math.min(window.scrollY * 0.75, 500); // strength + max shift
+        heroImg.style.objectPosition = `center calc(50% + ${y}px)`;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true }
+      );
+
+      update();
+    }
   </script>
+
+  
 
 </body>
 </html>
