@@ -35,6 +35,58 @@
 
     a { color: inherit; }
 
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251,251,252,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      width: min(1080px, 92%);
+      margin: 0 auto;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand-link {
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .brand-link .aqua { color: var(--mc-aqua-text); }
+    .brand-link .bridge { color: #6b7280; }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: #111827;
+      font-size: .92rem;
+    }
+
+    .topnav a:hover {
+      border-color: var(--line-2);
+      background: #fff;
+    }
+
     .hero {
       position: relative;
       height: 68vh;
@@ -391,6 +443,21 @@
     }
 
     @media (max-width: 560px) {
+
+      .topbar-inner {
+        min-height: auto;
+        padding: 12px 0;
+        flex-direction: column;
+      }
+
+      .topnav {
+        width: 100%;
+      }
+
+      .topnav a {
+        flex: 1 1 calc(50% - 8px);
+      }
+
       .copy-btn {
         margin-left: 0;
         margin-top: 8px;
@@ -413,6 +480,18 @@
   </style>
 </head>
 <body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand-link" href="./"><span class="aqua">Aqua</span><span class="bridge">Bridge</span></a>
+      <nav class="topnav" aria-label="Primary navigation">
+        <a href="roadmap/">Roadmap</a>
+        <a href="https://discord.gg/894wEWNTK9" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="rules/">Rules</a>
+      </nav>
+    </div>
+  </div>
+
 
   <header class="hero">
     <img src="images/image-45.png" alt="AquaBridge server banner">
