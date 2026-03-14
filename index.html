@@ -768,8 +768,8 @@
       }
     });
 
-    // Subtle scroll-follow for the HERO banner (images/image-45.png) only
-    const heroImg = document.querySelector(".hero > img");
+    // Subtle scroll-follow for hero background images across the site
+    const heroImg = document.querySelector(".hero > img, .page-hero > img");
     if (heroImg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       let ticking = false;
 
