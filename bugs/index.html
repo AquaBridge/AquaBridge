@@ -22,6 +22,9 @@
       --mc-aqua: #55FFFF;
       --mc-lightgray: #D3D3D3;
       --topbar-height: 60px;
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
     }
 
     body {
@@ -29,7 +32,7 @@
       color: var(--text);
       background: var(--page);
       line-height: 1.5;
-      text-align: left;
+      text-align: center;
     }
 
     a { color: inherit; }
@@ -88,6 +91,7 @@
       text-decoration: none;
       padding: 8px 12px;
       border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-pill);
       background: rgba(255,255,255,.06);
       color: #f8fafc;
       font-size: .92rem;
@@ -101,7 +105,7 @@
 
     .page-hero {
       position: relative;
-      min-height: 320px;
+      min-height: 360px;
       overflow: hidden;
       background: #dfe4ea;
       border-bottom: 1px solid var(--line);
@@ -128,9 +132,14 @@
       z-index: 2;
       width: min(1080px, 92%);
       margin: 0 auto;
-      padding: 88px 0 80px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--topbar-height) + 18px) 0 32px;
       color: #fff;
-      text-align: left;
+      text-align: center;
     }
 
     .kicker {
@@ -152,14 +161,14 @@
     }
 
     .page-hero p {
-      margin: 12px 0 0;
+      margin: 12px auto 0;
       max-width: 760px;
       color: rgba(255,255,255,.96);
       text-shadow: 0 1px 8px rgba(0,0,0,.22);
     }
 
     .section {
-      padding: 32px 0;
+      padding: 40px 0;
       border-top: 1px solid var(--line);
       background: var(--white);
     }
@@ -169,7 +178,7 @@
     .inner {
       width: min(1080px, 92%);
       margin: 0 auto;
-      text-align: left;
+      text-align: center;
     }
 
     h2 {
@@ -200,6 +209,7 @@
     .chip {
       padding: 8px 12px;
       border: 1px solid var(--line-2);
+      border-radius: var(--radius-pill);
       background: #ffffff;
       font-size: .92rem;
       color: #1f2937;
@@ -224,6 +234,8 @@
       border: 1px solid var(--line);
       background: #ffffff;
       padding: 18px 18px 16px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 28px rgba(17,24,39,.05);
     }
 
     .section.alt .timeline-item,
@@ -237,6 +249,7 @@
       margin-bottom: 8px;
       padding: 6px 10px;
       border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
       background: var(--soft);
       color: #111827;
       font-size: .82rem;
@@ -270,14 +283,58 @@
     .bug-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
+      gap: 16px;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .bug-lead {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .bug-tools {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .bug-panel {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 28px rgba(17,24,39,.05);
+      padding: 20px;
+    }
+
+    .section.alt .bug-panel {
+      background: #f8f9fb;
+    }
+
+    .bug-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.04rem;
+      color: #111827;
+    }
+
+    .bug-panel p,
+    .bug-panel li {
+      color: var(--muted);
+    }
+
+    .bug-panel ul {
+      margin: 0;
+      padding-left: 18px;
     }
 
     .bug-item {
       border: 1px solid var(--line);
       background: #ffffff;
       padding: 18px 18px 16px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 28px rgba(17,24,39,.05);
     }
 
     .section.alt .bug-item {
@@ -289,6 +346,7 @@
       margin-bottom: 8px;
       padding: 6px 10px;
       border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
       background: var(--soft);
       color: #111827;
       font-size: .82rem;
@@ -323,6 +381,7 @@
       justify-content: center;
       padding: 10px 12px;
       border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
       background: #ffffff;
       text-decoration: none;
       color: #111827;
@@ -344,6 +403,7 @@
 
     @media (min-width: 760px) {
       .bug-grid,
+      .bug-tools,
       .rule-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -391,18 +451,33 @@
     <div class="page-hero-content">
       <p class="kicker">Issue Tracker</p>
       <h1>Bugs</h1>
-      <p>Known issues, recent fixes, and the fastest way to report something broken.</p>
+      <p>Known issues, recent fixes, and the cleanest way to report something broken without turning this page into a mess.</p>
     </div>
   </header>
 
   <section class="section">
     <div class="inner">
       <h2>Current status</h2>
-      <p>No public bug log has been filled out yet. Once you want to track issues here, add a new <code class="inline-code">&lt;article class="bug-item"&gt;</code> block to the list below.</p>
+      <p class="bug-lead">This page now keeps the overall layout centered like the rest of the site, while the actual bug content stays neatly left-aligned inside cards where readability matters.</p>
       <div class="info-row">
-        <div class="chip">Left aligned</div>
+        <div class="chip">Clean layout</div>
         <div class="chip">Easy to extend</div>
-        <div class="chip">Ready for reports</div>
+        <div class="chip">Readable reports</div>
+      </div>
+      <div class="bug-tools">
+        <article class="bug-panel">
+          <h3>How to add a new bug entry</h3>
+          <p>Duplicate one <code class="inline-code">&lt;article class="bug-item"&gt;</code> block, then edit its status, title, and description. The grid will keep the layout consistent automatically.</p>
+        </article>
+        <article class="bug-panel">
+          <h3>What makes a good report</h3>
+          <ul>
+            <li>What page or feature broke</li>
+            <li>What you clicked before it happened</li>
+            <li>What you expected instead</li>
+            <li>Device, browser, and screenshots if available</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -411,23 +486,24 @@
     <div class="inner">
       <p class="kicker">Known Issues</p>
       <h2>Bug list</h2>
+      <p class="muted">Use the cards below for actual public issues, fixes, or reporting guidance.</p>
       <div class="bug-grid">
         <article class="bug-item">
           <span class="bug-status">Open</span>
           <h3>No public bugs listed yet</h3>
-          <p>This page is ready, but no confirmed issue entries have been added yet.</p>
+          <p>The structure is ready, but there are no confirmed public issue entries here yet.</p>
         </article>
 
         <article class="bug-item">
-          <span class="bug-status">How to report</span>
+          <span class="bug-status">Report format</span>
           <h3>Send the exact steps</h3>
           <p>Include what you clicked, what happened, what you expected, and screenshots if you have them.</p>
         </article>
 
         <article class="bug-item">
           <span class="bug-status">Helpful details</span>
-          <h3>Include your version and page</h3>
-          <p>Mention the page, your device, and whether the issue happens every time or only sometimes.</p>
+          <h3>Include the page and device</h3>
+          <p>Mention the page, your device, browser, and whether the issue happens every time or only sometimes.</p>
         </article>
 
         <article class="bug-item">
@@ -443,11 +519,12 @@
     <div class="inner">
       <p class="kicker">Links</p>
       <h2>Need anything else?</h2>
-      <p class="muted">Jump back to the homepage, roadmap, rules, or Discord from here.</p>
+      <p class="muted">Jump to the homepage, roadmap, rules, bugs, or Discord from here.</p>
       <div class="footer-links">
         <a class="footer-link" href="../">Back to Homepage</a>
         <a class="footer-link" href="../roadmap/">View Roadmap</a>
         <a class="footer-link" href="../rules/">Read Rules</a>
+        <a class="footer-link" href="./">View Bugs</a>
         <a class="footer-link" href="https://discord.gg/894wEWNTK9" target="_blank" rel="noopener noreferrer">Join Discord</a>
       </div>
     </div>
@@ -455,7 +532,7 @@
 
   <footer>
     © 2026 AquaBridge<br><br>
-    Report issues early so they are easier to fix.
+    Report issues early so they are easier to reproduce and fix.
   </footer>
   <script>
     const topbar = document.querySelector(".topbar");
