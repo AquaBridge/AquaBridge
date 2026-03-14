@@ -22,6 +22,9 @@
       --mc-aqua: #55FFFF;
       --mc-lightgray: #D3D3D3;
       --topbar-height: 60px;
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
     }
 
     body {
@@ -89,6 +92,7 @@
       text-decoration: none;
       padding: 8px 12px;
       border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-pill);
       background: rgba(255,255,255,.06);
       color: #f8fafc;
       font-size: .92rem;
@@ -161,6 +165,7 @@
       background: rgba(250,251,252,.95);
       color: #111827;
       padding: 10px 14px;
+      border-radius: var(--radius-sm);
       font-weight: 700;
       letter-spacing: .02em;
       font-size: clamp(1rem, 2vw, 1.15rem);
@@ -172,6 +177,7 @@
       margin-left: 8px;
       padding: 10px 12px;
       border: 1px solid rgba(17,24,39,.12);
+      border-radius: var(--radius-sm);
       background: rgba(250,251,252,.95);
       color: #111827;
       font: inherit;
@@ -182,7 +188,7 @@
     .copy-btn:hover { background: #ffffff; }
 
     .section {
-      padding: 32px 0;
+      padding: 40px 0;
       border-top: 1px solid var(--line);
       background: var(--white);
     }
@@ -231,6 +237,7 @@
     .chip {
       padding: 8px 12px;
       border: 1px solid var(--line-2);
+      border-radius: var(--radius-pill);
       background: #ffffff;
       font-size: .92rem;
       color: #1f2937;
@@ -253,6 +260,7 @@
       display: block;
       background: #e9edf2;
       border: 1px solid var(--line);
+      border-radius: var(--radius-md);
     }
 
     .wall-grid {
@@ -267,6 +275,7 @@
       border: 1px solid var(--line);
       background: #fff;
       padding: 14px 10px 12px;
+      border-radius: var(--radius-md);
     }
 
     .section.alt .wall-item {
@@ -283,6 +292,7 @@
       margin: 0 auto 10px;
       border: 1px solid var(--line-2);
       background: #e9edf2;
+      border-radius: 14px;
     }
 
     .mode-img {
@@ -346,6 +356,7 @@
       border: 1px solid var(--line);
       background: #fff;
       padding: 6px 10px;
+      border-radius: var(--radius-pill);
       font-size: .82rem;
     }
 
@@ -358,6 +369,7 @@
       padding: 18px 14px;
       max-width: 760px;
       border: 1px solid var(--line);
+      border-radius: var(--radius-md);
       background: #ffffff;
     }
 
@@ -388,6 +400,7 @@
       gap: 8px;
       padding: 10px 12px;
       border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
       background: #ffffff;
       text-decoration: none;
       color: #111827;
