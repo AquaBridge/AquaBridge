@@ -21,6 +21,7 @@
       --muted: #667085;
       --mc-aqua: #55FFFF;
       --mc-lightgray: #D3D3D3;
+      --topbar-height: 60px;
     }
 
     body {
@@ -41,6 +42,7 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(85,255,255,.18);
       box-shadow: 0 10px 30px rgba(0,0,0,.14);
+      margin-bottom: calc(-1 * var(--topbar-height));
     }
 
     .topbar-inner {
@@ -56,7 +58,7 @@
     .brand-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 0;
       text-decoration: none;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -69,6 +71,7 @@
       height: 22px;
       display: block;
       flex: 0 0 22px;
+      margin-right: 10px;
     }
 
     .brand-link .aqua { color: var(--mc-aqua); }
@@ -98,7 +101,7 @@
 
     .page-hero {
       position: relative;
-      min-height: 320px;
+      min-height: calc(320px + var(--topbar-height));
       overflow: hidden;
       background: #dfe4ea;
       border-bottom: 1px solid var(--line);
@@ -414,5 +417,16 @@
     © 2026 AquaBridge<br><br>
     ValveWheresHL3, what happened to POINTER BLOCK
   </footer>
+  <script>
+    const topbar = document.querySelector(".topbar");
+
+    function syncTopbarHeight() {
+      if (!topbar) return;
+      document.documentElement.style.setProperty("--topbar-height", `${topbar.offsetHeight}px`);
+    }
+
+    syncTopbarHeight();
+    window.addEventListener("resize", syncTopbarHeight);
+  </script>
 </body>
 </html>
